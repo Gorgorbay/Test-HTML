@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Mon suivi interactif</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f7f7f7; }
+    h1 { color: #333; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    th { background: #eee; }
+    .completed { background: #d4edda; }
+    .in-progress { background: #fff3cd; }
+    button { padding: 5px 10px; margin-top: 10px; cursor: pointer; }
+    .container { display: flex; flex-direction: column; gap: 30px; }
+    .view { padding: 10px; background: white; border-radius: 10px; box-shadow: 0 0 10px #ccc; }
+  </style>
+</head>
+<body>
+  <h1>Suivi des objectifs</h1>
+  
+  <div class="container">
+    <div class="view">
+      <h2>Vue hebdomadaire</h2>
+      <table>
+        <tr>
+          <th>Semaine</th>
+          <th>Objectif</th>
+          <th>Statut</th>
+          <th>Modifier</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Lire 2 chapitres</td>
+          <td class="in-progress" id="week1-status">En cours</td>
+          <td><button onclick="changeStatus('week1-status')">Changer</button></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Faire 3 séances de sport</td>
+          <td class="completed" id="week2-status">Fait</td>
+          <td><button onclick="changeStatus('week2-status')">Changer</button></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="view">
+      <h2>Vue mensuelle</h2>
+      <table>
+        <tr>
+          <th>Objectif</th>
+          <th>Statut</th>
+          <th>Modifier</th>
+        </tr>
+        <tr>
+          <td>Lire 2 chapitres</td>
+          <td class="in-progress" id="month1-status">En cours</td>
+          <td><button onclick="changeStatus('month1-status')">Changer</button></td>
+        </tr>
+        <tr>
+          <td>Faire 3 séances de sport</td>
+          <td class="completed" id="month2-status">Fait</td>
+          <td><button onclick="changeStatus('month2-status')">Changer</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function changeStatus(id) {
+      let cell = document.getElementById(id);
+      if (cell.innerHTML === "En cours") {
+        cell.innerHTML = "Fait";
+        cell.className = "completed";
+      } else {
+        cell.innerHTML = "En cours";
+        cell.className = "in-progress";
+      }
+    }
+  </script>
+
+</body>
+</html>
